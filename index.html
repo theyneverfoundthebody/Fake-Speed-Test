@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fake Speed Test</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .container {
+    text-align: center;
+    background-color: #070707;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+
+  #speed {
+    font-size: 3rem;
+    color: #61dafb;
+    margin-bottom: 20px;
+    position: relative;
+    animation: fluctuate 2s infinite alternate;
+  }
+
+  @keyframes fluctuate {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+  }
+
+  #ip {
+    font-size: 1rem;
+    color: #98c379;
+    margin-bottom: 20px;
+  }
+
+  .notification {
+    background-color: #ff5555;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .notification-title {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+
+  .notification-description {
+    font-size: 1rem;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="notification">
+      <div class="notification-title">VPN!</div>
+      <div class="notification-description">VPN Detected!</div>
+      <div class="notification-description">VPN Host Name: 85-SaturnX-7.0.0.0.0.0.1-Server5.api-cloud-fare.gg</div>
+    </div>
+    <div id="speed">85,000 Mbps</div>
+    <div id="ip">Your IP: 172.31.255.12</div>
+  </div>
+
+  <script>
+    function updateSpeed() {
+      var speedElement = document.getElementById("speed");
+      var speed = 85000;
+      var increment = 20;
+      var counter = setInterval(function() {
+        speed += increment;
+        if (speed >= 85999) {
+          increment = -20;
+        } else if (speed <= 80000) {
+          increment = 20;
+        }
+        speedElement.textContent = speed.toLocaleString() + " Mbps";
+      }, 500);
+    }
+
+    updateSpeed();
+  </script>
+</body>
+</html>
